@@ -11,3 +11,91 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+#
+# Work related aliases
+alias vi='nvim'
+alias vim='nvim' #use vim8 from brew
+alias lla='ll -a'
+alias lll='ll -a | lolcat'
+alias my='cd ~/code/my/'
+alias work='cd ~/code/work/'
+alias projects='cd ~/code/klarna/team-panda/Projects'
+alias pandas='cd ~/code/klarna/team-panda'
+alias agical='cd ~/code/work/agical/'
+alias cls='clear'
+alias rcop='rubocop -c ~/Projects/style-guide/rubocop.yml'
+alias dcu='docker-compose up'
+alias dcl='docker-compose logs'
+alias dcb='docker-compose build'
+alias dcr='docker-compose run'
+alias myip='ifconfig | grep -e "inet\s"'
+alias weather='curl wttr.in/~Stockholm'
+alias less='less -N'
+
+# Ruby
+alias be='noglob bundle exec'
+alias rake='noglob rake'
+alias brake='noglob bundle exec rake'
+alias rspec='noglob bundle exec rspec'
+alias guard='noglob bundle exec guard'
+alias pcat="pygmentize -f terminal256 -O style=native -g"
+alias mex="iex -S mix"
+alias docker_kill_ps="docker ps -aq | awk '{print $1}' | xargs docker rm -f"
+alias docker_kill_images="docker images -aq | awk '{print $1}' | xargs docker rmi -f"
+
+#git
+alias g="git"
+alias ga="git add"
+alias gl="git l"
+alias gc="git commit -v"
+alias gd="git diff"
+alias gst="git status"
+alias gup="git pull --rebase"
+alias gp="git push"
+alias gca="git commit -av"
+alias gpr="git pull -v -n --rebase"
+alias gco="git checkout"
+
+# tmux
+alias tls="tmux ls"
+alias tat="tmux attach -t"
+alias tns="tmux new -s"
+
+export VIMCONFIG=~/.vim
+export VIMDATA=~/.vim
+export RIPGREP_CONFIG_PATH='~/.ripgreprc'
+export FZF_DEFAULT_COMMAND='rg --files'
+
+export PATH="/~/.rbenv/bin:usr/local/bin:/usr/local/sbin:/bin:/usr/sbin:/sbin:~/bin:/Users/krirou/Applications/Firefox.app/Contents/MacOS:$PATH"
+export PATH=$PATH:$VIMCONFIG/pack/minpac/start/fzf/bin
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# # Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+export EDITOR='nvim'
+export VISUAL='nvim'
+
+eval "$(rbenv init -)"
+autoload -Uz promptinit
+promptinit
+prompt agnoster
+
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+
+# kiex
+test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPS="--extended"
+# fnm
+eval "$(fnm env --multi)"
+
+# fnm
+export PATH=$HOME/.fnm:$PATH
+eval "`fnm env --multi`"
+
+# asdf
+. $HOME/.asdf/asdf.sh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
